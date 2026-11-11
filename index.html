@@ -175,6 +175,12 @@ h2{font:700 1.75rem/1.15 var(--display);letter-spacing:-.01em;margin:0 0 20px;te
 .more-posts{display:inline-block;margin-top:18px;font-weight:600}
 .more-posts span{display:inline-block;transition:transform .2s ease}
 .more-posts:hover span{transform:translate(2px,-2px)}
+.contact{border-top:1px solid var(--line);padding-top:56px;display:flex;flex-direction:column;gap:14px}
+.contact h2{margin:0;color:var(--ink)}
+.contact-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+.contact-mail{font:700 1.25rem var(--body);overflow-wrap:anywhere}
+.contact-copy{background:var(--accent-soft);color:var(--accent);border:0;border-radius:999px;padding:7px 14px;font:700 .74rem var(--body);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.contact-copy:hover{filter:brightness(.97)}
 /* Skills */
 .skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 @media (max-width:860px){.skills{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -406,6 +412,13 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
       <a class="more-posts" href="https://substack.com/@joinproduct" target="_blank" rel="noopener">Read more articles on Substack <span aria-hidden="true">↗</span></a>
     </section>
 
+    <footer class="contact">
+      <h2>Ready to get in touch?</h2>
+      <div class="contact-row">
+        <a class="contact-mail" href="mailto:joanne.sturge@gmail.com">joanne.sturge@gmail.com</a>
+        <button class="contact-copy" id="contact-copy" type="button">Copy email</button>
+      </div>
+    </footer>
   </main>
 </div>
 <script>
@@ -435,6 +448,13 @@ document.getElementById('more-toggle').addEventListener('click',function(){
   var open=this.getAttribute('aria-expanded')==='true',box=document.getElementById('more-about');
   box.hidden=open;this.setAttribute('aria-expanded',String(!open));
   this.querySelector('.mt-label').textContent=open?'Read more about me':'Show less';
+});
+</script>
+<script>
+document.getElementById('contact-copy').addEventListener('click',function(){
+  var b=this,a=document.querySelector('.contact-mail');
+  function sel(){var r=document.createRange();r.selectNodeContents(a);var x=getSelection();x.removeAllRanges();x.addRange(r);b.textContent='Selected';}
+  try{navigator.clipboard.writeText('joanne.sturge@gmail.com').then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy email'},1800)},sel);}catch(e){sel();}
 });
 </script>
 <script>
