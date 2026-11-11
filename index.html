@@ -87,6 +87,12 @@ h2{font:700 1.75rem/1.15 var(--display);letter-spacing:-.01em;margin:0 0 20px;te
 .intro .lede{font-weight:600}
 .intro .lede strong{font-weight:800}
 .intro a{font-weight:600}
+.more{display:flex;flex-direction:column;gap:14px}
+.more:not([hidden]){animation:rise .35s ease both}
+.more-toggle{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;background:none;border:0;padding:4px 0;color:var(--accent);font:600 .92rem var(--body);cursor:pointer}
+.more-toggle svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;transition:transform .25s ease}
+.more-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+.more-toggle:hover .mt-label{text-decoration:underline}
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:28px}
 @media (max-width:620px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .stat{background:var(--surface);padding:18px 18px 16px}
@@ -211,9 +217,12 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
       <p class="eyebrow">Summary</p>
       <div class="intro">
         <p class="lede">Product manager with <strong>4+ years in product</strong> and <strong>6+ years in product marketing and go-to-market</strong>. At ShipStation I own the inventory product lane behind <strong>$36M+ in revenue</strong>, launched new revenue-generating add-ons, and grew from PM to Staff in under four years.</p>
-        <p>I'm also a self-proclaimed busybody (I have a hard time slowing down). I love cooking and traveling, and I have a new hobby to obsess over each month.</p>
-        <p>Contact me if you're interested in learning more about my experiences, perhaps how I've lived on three continents, how I've spoken at events with hundreds of attendees, or the time I traveled to Panama on a brigade and worked with family-run businesses using only my Spanish to communicate with them.</p>
-        <p>I have a lot I would like to discuss with you! Maybe over some (virtual) coffee? <a href="https://www.linkedin.com/in/joannesturge" target="_blank" rel="noopener">Let's connect!</a></p>
+        <div id="more-about" class="more" hidden>
+          <p>I'm also a self-proclaimed busybody (I have a hard time slowing down). I love cooking and traveling, and I have a new hobby to obsess over each month.</p>
+          <p>Contact me if you're interested in learning more about my experiences, perhaps how I've lived on three continents, how I've spoken at events with hundreds of attendees, or the time I traveled to Panama on a brigade and worked with family-run businesses using only my Spanish to communicate with them.</p>
+          <p>I have a lot I would like to discuss with you! Maybe over some (virtual) coffee? <a href="https://www.linkedin.com/in/joannesturge" target="_blank" rel="noopener">Let's connect!</a></p>
+        </div>
+        <button class="more-toggle" id="more-toggle" type="button" aria-expanded="false" aria-controls="more-about"><span class="mt-label">Read more about me</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
       </div>
       <div class="stats">
         <div class="stat"><b data-count="36" data-prefix="$" data-suffix="M+">$36M+</b><span>revenue from the product lane I manage</span></div>
@@ -335,12 +344,12 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
         <figure class="ref">
           <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 26v-8c0-6 3-10 9-12l1 3c-3 1-5 4-5 7h5v10zm14 0v-8c0-6 3-10 9-12l1 3c-3 1-5 4-5 7h5v10z"/></svg>
           <blockquote>Joanne is one of the best Product Managers I've had the pleasure of working with&hellip; She's an exceptional communicator who can write copy, talk to customers, give feedback to peers, and present to leadership&hellip; You want Joanne on your team.</blockquote>
-          <figcaption><div><b>Sean</b> <span>· My manager</span></div><a href="https://www.linkedin.com/in/joannesturge/details/recommendations/" target="_blank" rel="noopener">Read more <span aria-hidden="true">↗</span></a></figcaption>
+          <figcaption><div><b>Sean</b> <span>· Past manager</span></div><a href="https://www.linkedin.com/in/joannesturge/details/recommendations/" target="_blank" rel="noopener">Read more <span aria-hidden="true">↗</span></a></figcaption>
         </figure>
         <figure class="ref">
           <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 26v-8c0-6 3-10 9-12l1 3c-3 1-5 4-5 7h5v10zm14 0v-8c0-6 3-10 9-12l1 3c-3 1-5 4-5 7h5v10z"/></svg>
           <blockquote>Joanne is the rare, self driven, over delivering, hard working and thoughtful ace every company and team needs to succeed. I especially love how much ownership Joanne takes in anything she does. &hellip;if she desires it, she'll make a phenomenal chief product officer one day.</blockquote>
-          <figcaption><div><b>Leandrew</b> <span>· My manager</span></div><a href="https://www.linkedin.com/in/joannesturge/details/recommendations/" target="_blank" rel="noopener">Read more <span aria-hidden="true">↗</span></a></figcaption>
+          <figcaption><div><b>Leandrew</b> <span>· Past manager</span></div><a href="https://www.linkedin.com/in/joannesturge/details/recommendations/" target="_blank" rel="noopener">Read more <span aria-hidden="true">↗</span></a></figcaption>
         </figure>
       </div>
     </section>
@@ -405,6 +414,13 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
     else if(io){el.textContent=fmt(el,0);io.observe(el);}
   });
 })();
+</script>
+<script>
+document.getElementById('more-toggle').addEventListener('click',function(){
+  var open=this.getAttribute('aria-expanded')==='true',box=document.getElementById('more-about');
+  box.hidden=open;this.setAttribute('aria-expanded',String(!open));
+  this.querySelector('.mt-label').textContent=open?'Read more about me':'Show less';
+});
 </script>
 <script>
 document.getElementById('copy-email').addEventListener('click', function(){
