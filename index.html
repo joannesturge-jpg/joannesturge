@@ -15,6 +15,24 @@
 body{margin:0;font-family:system-ui,sans-serif;font-size:14px}
 img{max-width:100%}
 [hidden]{display:none!important}
+
+/* Motion */
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes ping{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--good) 55%,transparent)}100%{box-shadow:0 0 0 8px transparent}}
+.rail,main>section{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+main>section:nth-child(1){animation-delay:.08s}
+main>section:nth-child(2){animation-delay:.16s}
+main>section:nth-child(n+3){animation-delay:.24s}
+.badge i{animation:ping 1.8s ease-out infinite}
+.feature,.tool,.ref,.post,.skill,.cert,.stat{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.feature:hover,.tool:hover,.ref:hover,.post:hover,.skill:hover,.cert:hover{transform:translateY(-3px);box-shadow:0 10px 28px -14px color-mix(in srgb,var(--accent) 45%,transparent);border-color:color-mix(in srgb,var(--accent) 35%,var(--line))}
+.stat:hover{transform:translateY(-2px)}
+.btn span,.ref figcaption a span{display:inline-block;transition:transform .2s ease}
+.btn:hover span,.ref figcaption a:hover span{transform:translate(2px,-2px)}
+.photo{transition:transform .4s ease}
+.photo:hover{transform:rotate(-3deg) scale(1.03)}
+[data-count]{font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){.rail,main>section,.badge i{animation:none}.feature,.tool,.ref,.post,.skill,.cert,.stat,.photo,.btn span{transition:none}.feature:hover,.tool:hover,.ref:hover,.post:hover,.skill:hover,.cert:hover,.stat:hover,.photo:hover{transform:none}}
 </style>
 <style>
 /* Layout: sticky profile rail on the left, a single reading column on the right that leads with shipped AI work, then career, then skills. */
@@ -65,7 +83,9 @@ h2{font:700 1.75rem/1.15 var(--display);letter-spacing:-.01em;margin:0 0 20px;te
 
 .intro{display:flex;flex-direction:column;gap:14px;max-width:64ch}
 .intro p{margin:0}
-.intro p:not(.lede){color:var(--muted);font-size:1.02rem}
+.intro p{font-size:1rem;line-height:1.6;color:var(--ink)}
+.intro .lede{font-weight:600}
+.intro .lede strong{font-weight:800}
 .intro a{font-weight:600}
 .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:28px}
 @media (max-width:620px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -196,10 +216,10 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
         <p>I have a lot I would like to discuss with you! Maybe over some (virtual) coffee? <a href="https://www.linkedin.com/in/joannesturge" target="_blank" rel="noopener">Let's connect!</a></p>
       </div>
       <div class="stats">
-        <div class="stat"><b>$36M+</b><span>revenue from the product lane I manage</span></div>
-        <div class="stat"><b>30%</b><span>lift in inventory feature adoption</span></div>
-        <div class="stat"><b>200+</b><span>customer interviews a year</span></div>
-        <div class="stat"><b>3,000</b><span>active users on my AI-built app</span><span class="kind kind-sm">Personal project</span></div>
+        <div class="stat"><b data-count="36" data-prefix="$" data-suffix="M+">$36M+</b><span>revenue from the product lane I manage</span></div>
+        <div class="stat"><b data-count="30" data-suffix="%">30%</b><span>lift in inventory feature adoption</span></div>
+        <div class="stat"><b data-count="200" data-suffix="+">200+</b><span>customer interviews a year</span></div>
+        <div class="stat"><b data-count="3000">3,000</b><span>active users on my AI-built app</span><span class="kind kind-sm">Personal project</span></div>
       </div>
     </section>
 
@@ -284,7 +304,7 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
           <h3>Caked Leagues</h3>
           <p>A fantasy league app where you can draft anything, even the niche stuff. I built it because I saw a gap: no tools existed for running fantasy leagues around the reality and competition shows I watch. I took it from idea to production on my own with AI coding tools: accounts, league creation, custom scoring, and an admin analytics dashboard I use to watch engagement and decide what to build next.</p>
         </div>
-        <div class="users"><b>3,000</b><span>active users</span></div>
+        <div class="users"><b data-count="3000">3,000</b><span>active users</span></div>
         <div class="cta">
           <a class="btn" href="https://cakedleagues.com" target="_blank" rel="noopener">Visit cakedleagues.com <span aria-hidden="true">↗</span></a>
           <ul class="chips"><li>Next.js</li><li>Postgres</li><li>Vercel</li><li>Product analytics</li></ul>
@@ -364,6 +384,28 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
 
   </main>
 </div>
+<script>
+(function(){
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els=[].slice.call(document.querySelectorAll('[data-count]'));
+  if(reduce||!els.length)return;
+  function fmt(el,v){return (el.dataset.prefix||'')+Math.round(v).toLocaleString('en-US')+(el.dataset.suffix||'');}
+  function run(el,delay){
+    var end=+el.dataset.count,dur=1800,t0=null;
+    el.textContent=fmt(el,0);
+    setTimeout(function(){requestAnimationFrame(function step(t){
+      if(t0===null)t0=t;var p=Math.min((t-t0)/dur,1),e=1-Math.pow(1-p,4);
+      el.textContent=fmt(el,end*e);if(p<1)requestAnimationFrame(step);else el.textContent=fmt(el,end);
+    })},delay);
+  }
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){io.unobserve(en.target);run(en.target,0);}})},{threshold:.6}):null;
+  els.forEach(function(el,i){
+    var r=el.getBoundingClientRect();
+    if(r.top<innerHeight&&r.bottom>0)run(el,300+i*120);
+    else if(io){el.textContent=fmt(el,0);io.observe(el);}
+  });
+})();
+</script>
 <script>
 document.getElementById('copy-email').addEventListener('click', function(){
   var hint=document.getElementById('copy-hint'), email=this.dataset.email;
