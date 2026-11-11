@@ -181,6 +181,20 @@ h2{font:700 1.75rem/1.15 var(--display);letter-spacing:-.01em;margin:0 0 20px;te
 .contact-mail{font:700 1.25rem var(--body);overflow-wrap:anywhere}
 .contact-copy{background:var(--accent-soft);color:var(--accent);border:0;border-radius:999px;padding:7px 14px;font:700 .74rem var(--body);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
 .contact-copy:hover{filter:brightness(.97)}
+main{gap:0}
+#experience,#ai,#references,#skills,#writing,.contact{margin-top:56px}
+#ai:has(> .sec-body[hidden]),#references:has(> .sec-body[hidden]),#skills:has(> .sec-body[hidden]),#writing:has(> .sec-body[hidden]){margin-top:28px;padding-top:28px}
+#writing:has(> .sec-body[hidden])+.contact{margin-top:28px}
+.sec-head{margin:0}
+.sec-toggle{all:unset;box-sizing:border-box;width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;font:inherit;color:var(--ink)}
+.sec-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:6px}
+.sec-chev{flex:none;width:36px;height:36px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;transition:transform .3s ease,background .2s ease}
+.sec-chev svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4}
+.sec-toggle:hover .sec-chev{background:color-mix(in srgb,var(--accent) 22%,var(--accent-soft))}
+.sec-toggle[aria-expanded="true"] .sec-chev{transform:rotate(180deg)}
+.sec-body{padding-top:20px}
+.sec-body:not([hidden]){animation:rise .4s ease both}
+@media (prefers-reduced-motion:reduce){.sec-chev{transition:none}.sec-body:not([hidden]){animation:none}}
 /* Skills */
 .skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 @media (max-width:860px){.skills{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -326,7 +340,8 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
 
     <section id="ai">
       <p class="eyebrow">Built with AI</p>
-      <h2>I prototype, build and ship with AI</h2>
+      <h2 class="sec-head"><button class="sec-toggle" type="button" aria-expanded="false" aria-controls="body-ai"><span>I prototype, build and ship with AI</span><span class="sec-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button></h2>
+      <div class="sec-body" id="body-ai" hidden>
       <article class="feature">
         <div>
           <span class="kind">Personal project</span>
@@ -355,11 +370,13 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
         </article>
       </div>
       <p class="note">Internal tools are built for my team at work and aren't public. Happy to walk through them in an interview.</p>
+      </div>
     </section>
 
     <section id="references">
       <p class="eyebrow">References</p>
-      <h2>What my managers say</h2>
+      <h2 class="sec-head"><button class="sec-toggle" type="button" aria-expanded="false" aria-controls="body-references"><span>What my managers say</span><span class="sec-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button></h2>
+      <div class="sec-body" id="body-references" hidden>
       <div class="refs">
         <figure class="ref">
           <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 26v-8c0-6 3-10 9-12l1 3c-3 1-5 4-5 7h5v10zm14 0v-8c0-6 3-10 9-12l1 3c-3 1-5 4-5 7h5v10z"/></svg>
@@ -372,11 +389,13 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
           <figcaption><div><b>Leandrew</b> <span>· Past manager</span></div><a href="https://www.linkedin.com/in/joannesturge/details/recommendations/" target="_blank" rel="noopener">Read more <span aria-hidden="true">↗</span></a></figcaption>
         </figure>
       </div>
+      </div>
     </section>
 
     <section id="skills">
       <p class="eyebrow">Skills &amp; certifications</p>
-      <h2>What I bring to the table</h2>
+      <h2 class="sec-head"><button class="sec-toggle" type="button" aria-expanded="false" aria-controls="body-skills"><span>What I bring to the table</span><span class="sec-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button></h2>
+      <div class="sec-body" id="body-skills" hidden>
       <div class="skills">
         <div class="skill"><h3>AI building</h3><ul class="chips"><li>AI-assisted prototyping</li><li>Building apps with AI</li><li>Shipping a live product</li><li>Internal tools</li></ul></div>
         <div class="skill"><h3>Product</h3><ul class="chips"><li>Roadmapping</li><li>Product strategy</li><li>Customer interviews</li><li>Competitive research</li><li>Exec &amp; board updates</li></ul></div>
@@ -389,11 +408,13 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
         <div class="cert"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.5-1.5 7.5 5-3 5 3-1.5-7.5"/></svg><div><b>AI Fluency</b><span>Anthropic</span></div><span class="kind">Certification</span></div>
         <div class="cert"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="m8.5 13.5-1.5 7.5 5-3 5 3-1.5-7.5"/></svg><div><b>Product Management</b><span>Pragmatic Institute</span></div><span class="kind">Certification</span></div>
       </div>
+      </div>
     </section>
 
     <section id="writing">
       <p class="eyebrow">Writing</p>
-      <h2>Jo in Product</h2>
+      <h2 class="sec-head"><button class="sec-toggle" type="button" aria-expanded="false" aria-controls="body-writing"><span>Jo in Product</span><span class="sec-chev" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button></h2>
+      <div class="sec-body" id="body-writing" hidden>
       <p class="writing-intro">I write about product and other musings on <a href="https://substack.com/@joinproduct" target="_blank" rel="noopener">Substack (@joinproduct)</a>. While this website was built with the help of AI, the content of my Substack is 100% human-written by myself! Feel free to browse, follow along, and maybe add a comment with your thoughts.</p>
       <div class="posts">
         <article class="post">
@@ -410,6 +431,7 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
         </article>
       </div>
       <a class="more-posts" href="https://substack.com/@joinproduct" target="_blank" rel="noopener">Read more articles on Substack <span aria-hidden="true">↗</span></a>
+      </div>
     </section>
 
     <footer class="contact">
@@ -456,6 +478,17 @@ document.getElementById('contact-copy').addEventListener('click',function(){
   function sel(){var r=document.createRange();r.selectNodeContents(a);var x=getSelection();x.removeAllRanges();x.addRange(r);b.textContent='Selected';}
   try{navigator.clipboard.writeText('joanne.sturge@gmail.com').then(function(){b.textContent='Copied';setTimeout(function(){b.textContent='Copy email'},1800)},sel);}catch(e){sel();}
 });
+</script>
+<script>
+(function(){
+  function setOpen(btn,open){btn.setAttribute('aria-expanded',String(open));document.getElementById(btn.getAttribute('aria-controls')).hidden=!open;}
+  var btns=[].slice.call(document.querySelectorAll('.sec-toggle'));
+  btns.forEach(function(b){b.addEventListener('click',function(){setOpen(b,b.getAttribute('aria-expanded')!=='true');});});
+  function openFor(id){var sec=document.getElementById(id);if(!sec)return;var b=sec.querySelector('.sec-toggle');if(b)setOpen(b,true);}
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(){openFor(a.getAttribute('href').slice(1));});});
+  if(location.hash)openFor(location.hash.slice(1));
+  window.addEventListener('hashchange',function(){openFor(location.hash.slice(1));});
+})();
 </script>
 <script>
 document.getElementById('copy-email').addEventListener('click', function(){
