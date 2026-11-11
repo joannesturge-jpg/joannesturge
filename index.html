@@ -137,11 +137,11 @@ h2{font:700 1.75rem/1.15 var(--display);letter-spacing:-.01em;margin:0 0 20px;te
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 main section{scroll-margin-top:24px}
-#ai,#experience,#skills{border-top:1px solid var(--line);padding-top:56px}
+#experience,#ai,#references,#skills{border-top:1px solid var(--line);padding-top:56px}
 .eyebrow{font-weight:700}
 .jump{display:flex;flex-wrap:wrap;gap:8px;padding-top:4px}
 .jump-label{width:100%;margin:0;font:500 .72rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.jump a{font-weight:600;font-size:.9rem;color:var(--accent);background:var(--accent-soft);padding:6px 12px;border-radius:999px}
+.jump a{font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--accent-soft);padding:6px 12px;border-radius:999px}
 .jump a:hover{text-decoration:none;filter:brightness(.97)}
 footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:20px}
 </style>
@@ -164,9 +164,9 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
     <p style="margin:0;color:var(--muted);font-size:.88rem">Southern California · Open to relocation</p>
     <nav class="jump" aria-label="Jump to section">
       <p class="jump-label">Jump to</p>
-      <a href="#references">References</a>
+      <a href="#experience">Work experience</a>
       <a href="#ai">AI work</a>
-      <a href="#experience">Past experience</a>
+      <a href="#references">References</a>
       <a href="#skills">Skills</a>
     </nav>
   </aside>
@@ -183,58 +183,8 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
       </div>
     </section>
 
-    <section id="references">
-      <p class="eyebrow">References</p>
-      <h2>What my managers say</h2>
-      <div class="refs">
-        <figure class="ref">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 26v-8c0-6 3-10 9-12l1 3c-3 1-5 4-5 7h5v10zm14 0v-8c0-6 3-10 9-12l1 3c-3 1-5 4-5 7h5v10z"/></svg>
-          <blockquote>Joanne is one of the best Product Managers I've had the pleasure of working with&hellip; She's an exceptional communicator who can write copy, talk to customers, give feedback to peers, and present to leadership&hellip; You want Joanne on your team.</blockquote>
-          <figcaption><div><b>Sean</b> <span>· My manager</span></div><a href="https://www.linkedin.com/in/joannesturge/details/recommendations/" target="_blank" rel="noopener">Read more <span aria-hidden="true">↗</span></a></figcaption>
-        </figure>
-        <figure class="ref">
-          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 26v-8c0-6 3-10 9-12l1 3c-3 1-5 4-5 7h5v10zm14 0v-8c0-6 3-10 9-12l1 3c-3 1-5 4-5 7h5v10z"/></svg>
-          <blockquote>Joanne is the rare, self driven, over delivering, hard working and thoughtful ace every company and team needs to succeed. I especially love how much ownership Joanne takes in anything she does. &hellip;if she desires it, she'll make a phenomenal chief product officer one day.</blockquote>
-          <figcaption><div><b>Leandrew</b> <span>· My manager</span></div><a href="https://www.linkedin.com/in/joannesturge/details/recommendations/" target="_blank" rel="noopener">Read more <span aria-hidden="true">↗</span></a></figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section id="ai">
-      <p class="eyebrow">Built with AI</p>
-      <h2>I prototype, build and ship with AI</h2>
-      <article class="feature">
-        <div>
-          <span class="kind">Personal project</span>
-          <h3>Caked Leagues</h3>
-          <p>A fantasy league app where you can draft anything, even the niche stuff. I built it because I saw a gap: no tools existed for running fantasy leagues around the reality and competition shows I watch. I took it from idea to production on my own with AI coding tools: accounts, league creation, custom scoring, and an admin analytics dashboard I use to watch engagement and decide what to build next.</p>
-        </div>
-        <div class="users"><b>3,000</b><span>active users</span></div>
-        <div class="cta">
-          <a class="btn" href="https://cakedleagues.com" target="_blank" rel="noopener">Visit cakedleagues.com <span aria-hidden="true">↗</span></a>
-          <ul class="chips"><li>Next.js</li><li>Postgres</li><li>Vercel</li><li>Product analytics</li></ul>
-        </div>
-      </article>
-
-      <div class="internal">
-        <article class="tool">
-          <span class="kind">Work example</span>
-          <h3>Feature analytics dashboards</h3>
-          <p>Dashboards that track Segment events for every feature I've shipped, so adoption and usage are visible from launch day instead of a quarter later.</p>
-          <div class="flow"><span>Segment events</span><em>→</em><span>dashboard</span><em>→</em><span>roadmap calls</span></div>
-        </article>
-        <article class="tool">
-          <span class="kind">Work example</span>
-          <h3>Feature feedback tracker</h3>
-          <p>Pulls user feedback from Gong calls, Slack channels and community forums into one place, so themes and requests are grouped by feature instead of scattered across tools.</p>
-          <div class="flow"><span>Gong</span><span>Slack</span><span>Forums</span><em>→</em><span>one tracker</span></div>
-        </article>
-      </div>
-      <p class="note">Internal tools are built for my team at work and aren't public. Happy to walk through them in an interview.</p>
-    </section>
-
     <section id="experience">
-      <p class="eyebrow">Experience</p>
+      <p class="eyebrow">Work experience</p>
       <h2>Where I've worked</h2>
 
       <div class="co">
@@ -302,6 +252,56 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
             </ul>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="ai">
+      <p class="eyebrow">Built with AI</p>
+      <h2>I prototype, build and ship with AI</h2>
+      <article class="feature">
+        <div>
+          <span class="kind">Personal project</span>
+          <h3>Caked Leagues</h3>
+          <p>A fantasy league app where you can draft anything, even the niche stuff. I built it because I saw a gap: no tools existed for running fantasy leagues around the reality and competition shows I watch. I took it from idea to production on my own with AI coding tools: accounts, league creation, custom scoring, and an admin analytics dashboard I use to watch engagement and decide what to build next.</p>
+        </div>
+        <div class="users"><b>3,000</b><span>active users</span></div>
+        <div class="cta">
+          <a class="btn" href="https://cakedleagues.com" target="_blank" rel="noopener">Visit cakedleagues.com <span aria-hidden="true">↗</span></a>
+          <ul class="chips"><li>Next.js</li><li>Postgres</li><li>Vercel</li><li>Product analytics</li></ul>
+        </div>
+      </article>
+
+      <div class="internal">
+        <article class="tool">
+          <span class="kind">Work example</span>
+          <h3>Feature analytics dashboards</h3>
+          <p>Dashboards that track Segment events for every feature I've shipped, so adoption and usage are visible from launch day instead of a quarter later.</p>
+          <div class="flow"><span>Segment events</span><em>→</em><span>dashboard</span><em>→</em><span>roadmap calls</span></div>
+        </article>
+        <article class="tool">
+          <span class="kind">Work example</span>
+          <h3>Feature feedback tracker</h3>
+          <p>Pulls user feedback from Gong calls, Slack channels and community forums into one place, so themes and requests are grouped by feature instead of scattered across tools.</p>
+          <div class="flow"><span>Gong</span><span>Slack</span><span>Forums</span><em>→</em><span>one tracker</span></div>
+        </article>
+      </div>
+      <p class="note">Internal tools are built for my team at work and aren't public. Happy to walk through them in an interview.</p>
+    </section>
+
+    <section id="references">
+      <p class="eyebrow">References</p>
+      <h2>What my managers say</h2>
+      <div class="refs">
+        <figure class="ref">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 26v-8c0-6 3-10 9-12l1 3c-3 1-5 4-5 7h5v10zm14 0v-8c0-6 3-10 9-12l1 3c-3 1-5 4-5 7h5v10z"/></svg>
+          <blockquote>Joanne is one of the best Product Managers I've had the pleasure of working with&hellip; She's an exceptional communicator who can write copy, talk to customers, give feedback to peers, and present to leadership&hellip; You want Joanne on your team.</blockquote>
+          <figcaption><div><b>Sean</b> <span>· My manager</span></div><a href="https://www.linkedin.com/in/joannesturge/details/recommendations/" target="_blank" rel="noopener">Read more <span aria-hidden="true">↗</span></a></figcaption>
+        </figure>
+        <figure class="ref">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 26v-8c0-6 3-10 9-12l1 3c-3 1-5 4-5 7h5v10zm14 0v-8c0-6 3-10 9-12l1 3c-3 1-5 4-5 7h5v10z"/></svg>
+          <blockquote>Joanne is the rare, self driven, over delivering, hard working and thoughtful ace every company and team needs to succeed. I especially love how much ownership Joanne takes in anything she does. &hellip;if she desires it, she'll make a phenomenal chief product officer one day.</blockquote>
+          <figcaption><div><b>Leandrew</b> <span>· My manager</span></div><a href="https://www.linkedin.com/in/joannesturge/details/recommendations/" target="_blank" rel="noopener">Read more <span aria-hidden="true">↗</span></a></figcaption>
+        </figure>
       </div>
     </section>
 
