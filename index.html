@@ -69,6 +69,15 @@ h2{font:700 1.75rem/1.15 var(--display);letter-spacing:-.01em;margin:0 0 20px;te
 .stat b{display:block;font:700 1.9rem/1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .stat span{display:block;color:var(--muted);font-size:.86rem;line-height:1.35;margin-top:8px}
 
+.refs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:720px){.refs{grid-template-columns:minmax(0,1fr)}}
+.ref{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:18px}
+.ref svg{width:30px;height:30px;fill:var(--sky)}
+.ref blockquote{margin:0;font-size:1.04rem;line-height:1.6}
+.ref figcaption{margin-top:auto;padding-top:16px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 16px}
+.ref figcaption b{font-weight:700}
+.ref figcaption span{color:var(--muted);font-size:.9rem}
+.ref figcaption a{font-weight:600;font-size:.9rem}
 /* AI work */
 .feature{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 28px;align-items:start}
 @media (max-width:620px){.feature{grid-template-columns:minmax(0,1fr);padding:22px}}
@@ -128,7 +137,7 @@ h2{font:700 1.75rem/1.15 var(--display);letter-spacing:-.01em;margin:0 0 20px;te
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 main section{scroll-margin-top:24px}
-#experience,#skills{border-top:1px solid var(--line);padding-top:56px}
+#ai,#experience,#skills{border-top:1px solid var(--line);padding-top:56px}
 .eyebrow{font-weight:700}
 .jump{display:flex;flex-wrap:wrap;gap:8px;padding-top:4px}
 .jump-label{width:100%;margin:0;font:500 .72rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -155,6 +164,7 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
     <p style="margin:0;color:var(--muted);font-size:.88rem">Southern California · Open to relocation</p>
     <nav class="jump" aria-label="Jump to section">
       <p class="jump-label">Jump to</p>
+      <a href="#references">References</a>
       <a href="#ai">AI work</a>
       <a href="#experience">Past experience</a>
       <a href="#skills">Skills</a>
@@ -170,6 +180,23 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
         <div class="stat"><b>30%</b><span>lift in inventory feature adoption</span></div>
         <div class="stat"><b>200+</b><span>customer interviews a year</span></div>
         <div class="stat"><b>3,000</b><span>active users on my AI-built app</span></div>
+      </div>
+    </section>
+
+    <section id="references">
+      <p class="eyebrow">References</p>
+      <h2>What my managers say</h2>
+      <div class="refs">
+        <figure class="ref">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 26v-8c0-6 3-10 9-12l1 3c-3 1-5 4-5 7h5v10zm14 0v-8c0-6 3-10 9-12l1 3c-3 1-5 4-5 7h5v10z"/></svg>
+          <blockquote>Joanne is one of the best Product Managers I've had the pleasure of working with&hellip; She's an exceptional communicator who can write copy, talk to customers, give feedback to peers, and present to leadership&hellip; You want Joanne on your team.</blockquote>
+          <figcaption><div><b>Sean</b> <span>· My manager</span></div><a href="https://www.linkedin.com/in/joannesturge/details/recommendations/" target="_blank" rel="noopener">Read more <span aria-hidden="true">↗</span></a></figcaption>
+        </figure>
+        <figure class="ref">
+          <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M4 26v-8c0-6 3-10 9-12l1 3c-3 1-5 4-5 7h5v10zm14 0v-8c0-6 3-10 9-12l1 3c-3 1-5 4-5 7h5v10z"/></svg>
+          <blockquote>Joanne is the rare, self driven, over delivering, hard working and thoughtful ace every company and team needs to succeed. I especially love how much ownership Joanne takes in anything she does. &hellip;if she desires it, she'll make a phenomenal chief product officer one day.</blockquote>
+          <figcaption><div><b>Leandrew</b> <span>· My manager</span></div><a href="https://www.linkedin.com/in/joannesturge/details/recommendations/" target="_blank" rel="noopener">Read more <span aria-hidden="true">↗</span></a></figcaption>
+        </figure>
       </div>
     </section>
 
