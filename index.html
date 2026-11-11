@@ -78,6 +78,15 @@ h2{font:700 1.75rem/1.15 var(--display);letter-spacing:-.01em;margin:0 0 20px;te
 .ref figcaption b{font-weight:700}
 .ref figcaption span{color:var(--muted);font-size:.9rem}
 .ref figcaption a{font-weight:600;font-size:.9rem}
+.posts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:22px}
+@media (max-width:720px){.posts{grid-template-columns:minmax(0,1fr)}}
+.post{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.post time{font:600 .74rem var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.post h3{font:700 1.3rem/1.25 var(--display);margin:0;text-wrap:balance}
+.post p{margin:0;color:var(--muted)}
+.post .btn{align-self:flex-start;margin-top:auto}
+.post .btn-wrap{margin-top:auto;padding-top:12px}
+.writing-intro{margin:0;max-width:62ch}
 /* AI work */
 .feature{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px 28px;align-items:start}
 @media (max-width:620px){.feature{grid-template-columns:minmax(0,1fr);padding:22px}}
@@ -137,7 +146,7 @@ h2{font:700 1.75rem/1.15 var(--display);letter-spacing:-.01em;margin:0 0 20px;te
 html{scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 main section{scroll-margin-top:24px}
-#experience,#ai,#references,#skills{border-top:1px solid var(--line);padding-top:56px}
+#experience,#ai,#references,#skills,#writing{border-top:1px solid var(--line);padding-top:56px}
 .eyebrow{font-weight:700}
 .jump{display:flex;flex-wrap:wrap;gap:8px;padding-top:4px}
 .jump-label{width:100%;margin:0;font:500 .72rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -168,6 +177,7 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
       <a href="#ai">AI work</a>
       <a href="#references">References</a>
       <a href="#skills">Skills</a>
+      <a href="#writing">Writing</a>
     </nav>
   </aside>
 
@@ -322,7 +332,26 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
       </div>
     </section>
 
-    <footer>I write about product on <a href="https://substack.com/@joinproduct" target="_blank" rel="noopener">Substack (@joinproduct)</a>.</footer>
+    <section id="writing">
+      <p class="eyebrow">Writing</p>
+      <h2>Jo in Product</h2>
+      <p class="writing-intro">I write about product on <a href="https://substack.com/@joinproduct" target="_blank" rel="noopener">Substack (@joinproduct)</a>. Lately that means how product people can work with AI without losing what makes their work their own.</p>
+      <div class="posts">
+        <article class="post">
+          <time datetime="2026-09-14">Sep 14, 2026</time>
+          <h3>Do AI advancements mean the death of Product?</h3>
+          <p>When to panic and look for a career move.</p>
+          <div class="btn-wrap"><a class="btn" href="https://joinproduct.substack.com/p/do-ai-advancements-mean-the-death" target="_blank" rel="noopener">Read more <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="post">
+          <time datetime="2026-06-03">Jun 3, 2026</time>
+          <h3>Combatting the fear of the AI revolution</h3>
+          <p>Does the advancement of artificial intelligence mean impending doom for our jobs?</p>
+          <div class="btn-wrap"><a class="btn" href="https://joinproduct.substack.com/p/combatting-the-fear-of-the-ai-revolution" target="_blank" rel="noopener">Read more <span aria-hidden="true">↗</span></a></div>
+        </article>
+      </div>
+    </section>
+
   </main>
 </div>
 <script>
