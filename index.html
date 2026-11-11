@@ -172,6 +172,9 @@ h2{font:700 1.75rem/1.15 var(--display);letter-spacing:-.01em;margin:0 0 20px;te
 .cert{align-items:flex-start}
 .cert>div,.cert svg{align-self:center}
 .cert .kind{margin:0 0 0 auto;font-size:.62rem;padding:5px 8px;white-space:nowrap}
+.more-posts{display:inline-block;margin-top:18px;font-weight:600}
+.more-posts span{display:inline-block;transition:transform .2s ease}
+.more-posts:hover span{transform:translate(2px,-2px)}
 /* Skills */
 .skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
 @media (max-width:860px){.skills{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -400,6 +403,7 @@ footer{color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padd
           <div class="btn-wrap"><a class="btn" href="https://joinproduct.substack.com/p/combatting-the-fear-of-the-ai-revolution" target="_blank" rel="noopener">Read more <span aria-hidden="true">↗</span></a></div>
         </article>
       </div>
+      <a class="more-posts" href="https://substack.com/@joinproduct" target="_blank" rel="noopener">Read more articles on Substack <span aria-hidden="true">↗</span></a>
     </section>
 
   </main>
